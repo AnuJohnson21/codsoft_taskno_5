@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<style>
+    #myinput{
+        width: 50%;
+        height: 40px;
+        margin-top: 10px;
+        border-radius: 5px;
+        border-width: 1px;
+        text-align: center;
+    }
+    .container{
+        text-align: center;
+    }
+    .content{
+        margin-top: 2rem;
+        text-align: center;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 40px rgba(0,0,0,.2);
+    }
+    li a{
+        text-decoration: none;
+        font-size: 20px;
+    }
+    li{
+        list-style-type: none;
+    }
+    .container h2{
+        margin-top: 20px;
+        letter-spacing: 6px;
+        background: #ADD8E6;
+        box-shadow: 0 0 40px rgba(0,0,0,.2);
+        border-radius: 10px;
+        height: 60px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+    }
+    .add h3{
+        font-weight: normal;
+    }
+    .add button{
+        background: #ADD8E6;
+        border: none;
+        height: 35px;
+    }
+    h4{
+        color: black;
+    }
+    button{
+        cursor: pointer;
+        height: 30px;
+        margin-left: 10px;
+        border-radius: 5px;
+        font-size: 15px;
+        width: 8rem;
+        color: black;
+
+
+    }
+    button{
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+    input{
+        font-size: 20px;
+    }
+    input::placeholder{
+        font-size: 20px;
+    }
+    .add button{
+        width: max-content;
+    }
+    #myinput{
+        margin-top: 2rem;
+    }
+</style>
+<script>
+    function myfun(){
+           var input, filter, ul, li, a, i, txtValue;
+           input=document.getElementById('myinput');
+           filter=input.value.toUpperCase();
+           ul=document.getElementById('myul');
+           li=ul.getElementsByTagName('li');
+           for(i=0; i < li.length; i++){
+               a=li[i].getElementsByTagName('a')[0];
+               txtValue=a.textContent  || a.innerText;
+               if(txtValue.toUpperCase().indexOf(filter) > -1){
+                   li[i].style.display = " ";
+                }
+                else{
+                   li[i].style.display = 'none';
+
+                }
+            }
+        }
+</script>
+
+<body>
+<div class="container">
+    <h2>Welcome to Contact Book...</h2>
+    <div class="add">
+        <h3>Do you want to add a new contact?</h3>
+        <a href="http://127.0.0.1:8000/codeapp/contactupload{{ i.id }}"><button>Add New Contact</button></a></li>
+    </div>
+    <div class="content">
+        <input id="myinput" type="text" placeholder="Search names or numbers..." onkeyup="myfun()">
+        <ul id="myul">
+        {% for i in data %}
+            <li>
+                <a href="">
+                    <h3><u>Name:</u> {{ i.name }}</h3>
+                    <h4><u>Phone:</u> <i>{{ i.phone}}</i></h4>
+                </a>
+                <a href="http://127.0.0.1:8000/codeapp/contactdelete{{ i.id }}"><button>Delete Contact</button></a>
+                <a href="http://127.0.0.1:8000/codeapp/contactupdate{{ i.id }}"><button>Update Contact</button></a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+</body>
+</html>

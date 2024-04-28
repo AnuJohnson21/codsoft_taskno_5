@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding: 0;
+        color: purple;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    form{
+        width: 400px;
+        margin-top: 2rem;
+        max-width:650px;
+        padding: 28px;
+        border-radius: 10px;
+        overflow: hidden;
+        background: transparent;
+        box-shadow: 0 0 40px rgba(0,0,0,.2);
+        text-align: center;
+    }
+    .content{
+        margin-top: 20px;
+    }
+    h2{
+    font-size: 30px;
+    font-weight:normal;
+    text-align: left;
+    color:purple;
+    padding-bottom: 8px;
+    border-bottom: 1px solid silver;
+    text-align: center;
+
+    }
+    label{
+        margin-top: 10px;
+        font-size: 20px;
+    }
+    button{
+        width: 15rem;
+        height: 40px;
+        background-image:linear-gradient(to right, #aa076b, #61045f);;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    input{
+        width: 300px;
+        height: 30px;
+        text-align: center;
+        font-size: 15px;
+    }
+    input::placeholder{
+        text-align: center;
+    }
+    .input-box{
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+    <h2>Add New Contact Here!</h2>
+    <div class="content">
+        <label>Name: </label>
+    <div class="input-box">
+        <input type="text" name="name" placeholder="Enter name">
+    </div>
+    <br><br>
+    <label>Address: </label>
+    <div class="input-box">
+        <input type="text" name="address" placeholder="Enter address">
+    </div>
+    <br><br>
+    <label>Phone: </label>
+    <div class="input-box">
+        <input type="number" name="phone" placeholder="Enter phone number">
+    </div>
+    <br><br>
+    <label>Email: </label>
+    <div class="input-box">
+        <input type="email" name="email" placeholder="Enter mail id">
+    <br><br>
+    </div>
+    </div>
+    <button>Add Contact</button>
+
+
+</form>
+
+</body>
+</html>
